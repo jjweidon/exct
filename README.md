@@ -1,2 +1,2 @@
-# excd
+# exct
 exercise coding test
