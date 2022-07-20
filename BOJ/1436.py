@@ -1,20 +1,10 @@
 N = int(input())
 find = 0
+title = 665
 
-i = 666
-while True:
-    num = str(i)
-    cnt6 = 1
-    for j in range(1,len(num)):
-        if int(num[j-1]) == int(num[j]) == 6:
-            cnt6 += 1
-            if cnt6 == 3:
-                break
-        else:
-            cnt6 = 1
-    if cnt6 == 3:
+while find < N:
+    title += 1
+    if '666' in str(title):
         find += 1
-        if find == N:
-            print(i)
-            break
-    i += 1
+    
+print(title)
