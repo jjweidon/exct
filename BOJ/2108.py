@@ -11,31 +11,15 @@ nums.sort()
 print(nums[round(len(nums)/2)])
       
 #최빈값
-if len(nums) == 1:
+if N == 1:
     print(nums[0])
 else:
-    mode = list(set(nums))
-    mode.sort()
-    cnt = []
-
-    count = 1
-    for i in range(1,len(nums)):
-        if nums[i] == nums[i-1]:
-            count += 1
-        else:
-            cnt.append(count)
-            count = 1
-    cnt.append(count)
-    if cnt.count(max(cnt)) < 2:
-        print(mode[cnt.index(max(cnt))])
+    from collections import Counter
+    li = Counter(nums).most_common(2)
+    if li[0][1] > li[1][1]:
+        print(li[0][0])
     else:
-        find = False
-        for j in range(0,len(cnt)):
-            if (cnt[j] == max(cnt)) ^ find:
-                find = True
-            elif (cnt[j] == max(cnt)) & find:
-                print(mode[j])
-                break
+        print(li[1][0])
 
 #범위
 print(nums[-1]-nums[0])
