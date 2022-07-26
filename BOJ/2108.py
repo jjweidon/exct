@@ -14,10 +14,10 @@ nums.sort()
 print(nums[round(len(nums)/2)])
       
 #최빈값
-if N == 1:
+li = Counter(nums).most_common(2)
+if len(li) == 1:
     print(nums[0])
 else:
-    li = Counter(nums).most_common(2)
     if li[0][1] > li[1][1]:
         print(li[0][0])
     else:
