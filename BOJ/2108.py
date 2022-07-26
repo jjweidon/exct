@@ -7,11 +7,11 @@ for _ in range(N):
     nums.append(int(sys.stdin.readline()))
 
 #산술평균
-print(round(sum(nums)/len(nums)))
+print(round(sum(nums)/N))
 
 #중앙값
 nums.sort()
-print(nums[round(len(nums)/2)])
+print(nums[N//2])
       
 #최빈값
 li = Counter(nums).most_common(2)
