@@ -10,10 +10,10 @@ for i in range(6):
     length.append(b)
 
 size1 = 1
+size2 = 1
 for direction in range(1,5):
     if ewsn.count(direction) == 1:
-        size1 *= length.pop(ewsn.index(direction))
-        ewsn.pop(ewsn.index(direction))
-size2 = length[1] * length[2]
+        size1 *= length[ewsn.index(direction)]
+        size2 *= length[ewsn.index(direction)+3]
 
 print(K * (size1 - size2))
