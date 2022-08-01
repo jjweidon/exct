@@ -14,6 +14,6 @@ size2 = 1
 for direction in range(1,5):
     if ewsn.count(direction) == 1:
         size1 *= length[ewsn.index(direction)]
-        size2 *= length[ewsn.index(direction)+3]
+        size2 *= length[(ewsn.index(direction)+3) % 6]
 
 print(K * (size1 - size2))
