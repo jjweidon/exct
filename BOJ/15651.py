@@ -9,4 +9,4 @@ def DFS():
         s.append(i)
         DFS()
         s.pop()
-DFS(0)
+DFS()
