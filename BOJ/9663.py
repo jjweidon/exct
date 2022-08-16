@@ -14,17 +14,18 @@ def check(x):
     return True
 
 def dfs(num):
+    global result
     # dfs가 N만큼 진행돼 퀸이 N만큼 놓이면 result를 1증가, dfs 종료
     if num == N:
-        global result
         result += 1
         return
     # num 열의 각 행을 check하며 적합한 위치에 퀸을 놓고 다음 열로 dfs를 진행해야 함
-    for i in range(N):
-        row[num] = i
-        if check(num):
-            # check에서 True를 반환하면 다음 열로 dfs 진행
-            dfs(num+1)
+    else:
+        for i in range(N):
+            row[num] = i
+            if check(num):
+                # check에서 True를 반환하면 다음 열로 dfs 진행
+                dfs(num+1)
 
 # dfs(0)으로 0번째 열부터 탐색 시작
 dfs(0)
