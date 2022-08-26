@@ -30,8 +30,10 @@ def checkCol(y, num):
 # 3*3박스 탐색
 def checkBox(x, y, num):
     # 좌표를 포함하는 3*3 박스에 해당 숫자가 있는 지 확인
-    for i in range((x//3)*3, (x//3+1)*3):
-        for j in range((y//3)*3, (y//3+1)*3):
+    x //= 3
+    y //= 3
+    for i in range(x*3, (x+1)*3):
+        for j in range(y*3, (y+1)*3):
             if num == sudoku[i][j]:
                 return False
     return True
@@ -47,9 +49,11 @@ def dfs(idx):
     y = zero[idx][1] # zero의 해당 인덱스 y좌표값
 
     for i in range(1, 10):
-        if checkRow(x, i) and checkCol(y, i) and checkBox(x, y, i):
-            sudoku[x][y] = i # 조건에 맞으면 0이 있던 자리에 해당 숫자 입력
-            dfs(idx + 1) # 다음 노드(다음 zero 인덱스)로 이동
-            sudoku[x][y] = 0 # ***백트랙킹: dfs가 끝나면 원상태로***
+        if checkRow(x, i):
+            if checkCol(y, i):
+                if checkBox(x, y, i):
+                    sudoku[x][y] = i # 조건에 맞으면 0이 있던 자리에 해당 숫자 입력
+                    dfs(idx + 1) # 다음 노드(다음 zero 인덱스)로 이동
+                    sudoku[x][y] = 0 # ***백트랙킹: dfs가 끝나면 원상태로***
 
 dfs(0) # zero의 0번째 좌표부터 dfs 시작
