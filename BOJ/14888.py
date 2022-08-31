@@ -1,3 +1,4 @@
+# PyPy3으로 제출: 틀림
 from itertools import permutations
 
 N = int(input())
