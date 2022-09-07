@@ -18,15 +18,11 @@ def binarySearch(N):
             cnt += lan // mid
         
         if cnt == N:
-            print(f'C1  start: {start}, end: {end}, mid: {mid}')
             return mid
         elif cnt < N:
-            print(f'C2  start: {start}, end: {end}, mid: {mid}')
             end = mid - 1
         else:
-            print(f'C3  start: {start}, end: {end}, mid: {mid}')
             start = mid + 1
-    print(f'C4  start: {start}, end: {end}, mid: {mid}')
     return end
 
 print(binarySearch(N))
