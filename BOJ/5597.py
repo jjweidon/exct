@@ -1,12 +1,7 @@
-import sys
-input = sys.stdin.readline
-
-student = set()
-for i in range(30):
-    student.add(i+1)
+student = [i for i in range(1,31)]
 
 for _ in range(28):
-    student.remove(int(input()))
-
-for num in student:
-    print(num)
+    num = int(input())
+    student.remove(num)
+print(student[0])
+print(student[1])
