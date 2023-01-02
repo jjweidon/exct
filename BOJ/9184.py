@@ -37,5 +37,4 @@ while 1:
     if a == -1 and b == -1 and c == -1:
         break
 
-    a, b, c = fnum(a), fnum(b), fnum(c)
-    print(f"w({a}, {b}, {c}) = {w[a][b][c]}")
+    print(f"w({a}, {b}, {c}) = {w[fnum(a)][fnum(b)][fnum(c)]}")
