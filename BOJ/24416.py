@@ -1,19 +1,13 @@
-def fib(n, cnt): 
-    if n == 1 or n == 2:
-        cnt += 1
-        return 1, cnt
-    else:
-        return (fib(n - 1, cnt)[0] + fib(n - 2, cnt)[0], cnt)
-
-def fibonacci(n):
+def fib(n):
     cnt2 = 0
-    f = [0, 1, 1]
-    for i in range(3, n + 1):
-        f.append(f[i - 1] + f[i - 2])
+    f = [0] * 40
+    f[0], f[1] = 1, 1
+    for i in range(2, n):
+        f[i] = f[i - 1] + f[i - 2]
         cnt2 += 1
-    return cnt2
+    
+    return f[n - 1], cnt2
 
 n = int(input())
-cnt1 = 0
-
-print(fib(n, cnt1)[0], fibonacci(n))
+fibonacci = fib(n)
+print(fibonacci[0], fibonacci[1])
