@@ -26,7 +26,7 @@ for c in range(1, 21):
                 w[a][b][c] = w[a-1][b][c] + w[a-1][b-1][c] + w[a-1][b][c-1] - w[a-1][b-1][c-1]
 
 def fnum(a, b ,c):
-    if a < 0 or b < 0 or c < 0:
+    if a <= 0 or b <= 0 or c <= 0:
         a, b, c = 0, 0, 0
     elif a > 20 or b > 20 or c > 20:
         a, b, c  = 20, 20, 20
