@@ -1,6 +1,8 @@
 """
 R은 뒤집기
 D는 앞에 버리기
+시간복잡도:
+- 100 * 100000
 """
 
 import sys
@@ -14,17 +16,26 @@ for _ in range(T):
     arr = input().rstrip()[1:-1]
     if arr: arr = arr.split(',')
     deq = deque(arr)
+    rvs = False
 
     for rd in p:
         if rd == 'R':
-            deq.reverse()
+            if rvs:
+                rvs = False
+            else:
+                rvs = True
         
         else:
-            if deq:
-                deq.popleft()
-            else:
+            if not deq:
                 print("error")
                 break
-    
+
+            if rvs:
+                deq.pop()
+            else:
+                deq.popleft()
+
     else:
+        if rvs:
+            deq.reverse()
         print(f"[{','.join(map(str, deq))}]")
