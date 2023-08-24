@@ -64,7 +64,7 @@ for i in range(N):
 			y = i + dy[k]
 			x = j + dx[k]
 
-			if y < 0 or y >= N or x < 0 or x >= N:
+			if y in (-1, N) or x in (-1, N):
 				continue
 			
 			if matrix[y][x] == "1":
