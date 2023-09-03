@@ -13,7 +13,7 @@ def dfs(cur):
 N, M, R = map(int, input().split())
 nodes = [[] for _ in range(N+1)]
 visit = [0] * (N+1)
-for i in range(M):
+for _ in range(M):
     u, v = map(int, input().split())
     nodes[u].append(v)
     nodes[v].append(u)
