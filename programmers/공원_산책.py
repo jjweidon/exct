@@ -25,12 +25,12 @@ def solution(park, routes):
         if op == "W":
             nx = ex - n
         
-        print(ey, ex, ny, nx)
-        
+        # 범위 벗어나는지
         if H <= ny or ny < 0 or W <= nx or nx < 0:
             ny, nx = ey, ex
             continue
         
+        # X 만나는지
         btn = False
         for j in range(min(ey, ny), max(ey, ny) + 1):
             if "X" in park[j]:
@@ -52,3 +52,8 @@ park = ["OXO","OOX","OXO","OOS"]
 routes = ["N 3"]
 
 print(solution(park, routes))
+
+"""
+리스트를 복사할 때 주소도 복사 => copy()로 얕은 복사
+파이썬은 리스트에 주소값만 넣기 때문에 자료형의 제약을 받지 않음.
+"""
