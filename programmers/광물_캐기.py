@@ -52,3 +52,10 @@ def solution(picks, minerals):
         return min(result)
 
     return solve(picks, minerals, 0)
+
+
+"""
+8번 테스트케이스:
+광물 수 > 곡갱이 수 인 경우,
+sort를 하면 뒤에 있는 광물은 캘 수 없음에도 앞에 와서 캐게 된다.
+"""
