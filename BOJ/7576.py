@@ -16,33 +16,29 @@ for j in range(N):
             if tomatos[j][i] == 1:
                 q.append((j, i))
 
-if not q:
-    print(0)
+answer = -1
+dy = [1, -1, 0, 0]
+dx = [0, 0, -1, 1]
 
+while q:
+    temp = q.copy()
+    q.clear()
+    while temp:
+        ey, ex = temp.popleft()
+        for k in range(4):
+            ny = ey + dy[k]
+            nx = ex + dx[k]
+            if ny in (-1, N) or nx in (-1, M):
+                continue
+            if visited[ny][nx] == True:
+                continue
+            visited[ny][nx] = True
+            q.append((ny, nx))
+    answer += 1
+
+for j in range(N):
+    if False in visited[j]:
+        print(-1)
+        break
 else:
-    answer = -1
-    dy = [1, -1, 0, 0]
-    dx = [0, 0, -1, 1]
-
-    while q:
-        temp = q.copy()
-        q.clear()
-        while temp:
-            ey, ex = temp.popleft()
-            for k in range(4):
-                ny = ey + dy[k]
-                nx = ex + dx[k]
-                if ny in (-1, N) or nx in (-1, M):
-                    continue
-                if visited[ny][nx] == True:
-                    continue
-                visited[ny][nx] = True
-                q.append((ny, nx))
-        answer += 1
-    
-    for j in range(N):
-        if False in visited[j]:
-            print(-1)
-            break
-    else:
-        print(answer)
+    print(answer)
