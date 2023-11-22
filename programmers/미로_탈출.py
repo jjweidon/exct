@@ -1,6 +1,4 @@
 from collections import deque
-import sys
-sys.setrecursionlimit(1000000)
 
 def solution(maps):
     H = len(maps)
@@ -9,9 +7,6 @@ def solution(maps):
     start = [0, 0]
     end = [0, 0]
     lever = [0, 0]
-    
-    start_to_lever = 0
-    lever_to_end = 0
     
     # 시작점, 출구, 레버 찾기
     for j in range(H):
@@ -25,14 +20,14 @@ def solution(maps):
     
     dy = [1, -1, 0, 0]
     dx = [0, 0, 1, -1]
-    visited = [[False] * W for _ in range(H)]
     
-    def check_time(s, e, step):
+    def check_time(s, e):
+        step = 0
+        visited = [[False] * W for _ in range(H)]
         q = deque([s])
         visited[s[0]][s[1]] = True
-        next = []
         while q:
-            while q:
+            for _ in range(len(q)):
                 ey, ex = q.popleft()
                 if ey == e[0] and ex == e[1]:
                     return step
@@ -43,15 +38,12 @@ def solution(maps):
                         continue
                     if maps[ny][nx] == 'X' or visited[ny][nx] == True:
                         continue
-                    next.append((ny, nx))
-            q.extend(next)
-            next.clear()
+                    q.append((ny, nx))
+                    visited[ny][nx] = True
             step += 1
         return 0
     
-    start_to_lever = check_time(start, lever, 0)
-    if start_to_lever:
-        lever_to_end = check_time(lever, end, 0)
-    answer = start_to_lever + lever_to_end
+    start_to_lever = check_time(start, lever)
+    lever_to_end = check_time(lever, end)
     
-    return answer if answer else -1
+    return start_to_lever + lever_to_end if start_to_lever and lever_to_end else -1
